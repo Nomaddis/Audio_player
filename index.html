@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta id="myViewport" name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <title>html player</title>
+    <link rel="stylesheet" href="css/all.css">
+</head>
+<body>
+    <div id="wrap">
+        <div class="container">
+            <div class="cover-container">
+                <img class="audio-cover" >
+                <div id="mp3_player">
+                    <div id="audio_box"></div>
+                    <canvas id="analyser_render"></canvas>
+                </div>
+                <button class="analyser-btn blue-analyser"></button>
+                <!--<button class="analyser-btn blue"></button>-->
+            </div>
+
+            <div id="audio-player">
+                <div class="audio-inf">
+                    <span class="audio-artist"></span> - <span class="audio-title"></span>
+                </div>
+                <label>
+                    <input class="volume" type="range" min="0" max="10" value="5">
+                </label>
+                <br>
+                <div class="control-buttons">
+                    <button class="prev-btn"></button>
+                    <button class="play-btn"></button>
+                    <button class="pause-btn"></button>
+                    <button class="stop-btn"></button>
+                    <button class="next-btn"></button>
+                </div>
+                <div class="clearfix"></div>
+                <div id="tracker">
+                    <div id="progressBar">
+                        <span id="progress"></span>
+                    </div>
+                    <span id="duration"></span>
+                </div>
+                <div class="clearfix"></div>
+                <div class="playlist-wrap">
+                    <div class="playlist-title">
+                        <h4 class="playlist-title-text">Playlist</h4>
+                    </div>
+                    <ul id="playlist" class="">
+                        <li song="Beatles - Aint She Sweet.mp3" cover="yellow-submarine.jpg" artist="Beatles">Aint She Sweet.mp3</li>
+                        <li song="Beatles - Free As A Bird.mp3" cover="yellow-submarine.jpg" artist="Beatles">Free As A Bird.mp3</li>
+                        <li song="Beatles - Girl.mp3" cover="yellow-submarine.jpg" artist="Beatles">Girl.mp3</li>
+                        <li song="Beatles - Yesterday.mp3" cover="yellow-submarine.jpg" artist="Beatles">Yesterday.mp3</li>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
