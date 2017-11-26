@@ -82,16 +82,6 @@ let nxt = function () {
         audio.play();
         showDuration();
 };
-// $('.next-btn').click(function () {
-//     audio.pause();
-//     let next = $('#playlist').find('li.active').next();
-//     if(next.length === 0) {
-//         next = $('#playlist').find('li:first-child')
-//     }
-//     initAudio(next);
-//     audio.play();
-//     showDuration();
-// });
 
 //Prev btn function
 $('.prev-btn').click(function () {
@@ -116,11 +106,34 @@ $('#playlist li').click(function () {
     showDuration();
 });
 
-// Volume Control
-$('.volume').change(function () {
-    audio.volume = parseFloat(this.value / 10);
-});
 
+// Volume Control
+//set/get volume value when page load
+$('.volume').change(function () {
+    audio.volume = parseFloat(this.value/10);
+    let volume = $('.volume').val();
+    localStorage.setItem('values', volume);
+});
+function setVolume(val) {
+    $('.volume').val(val);
+    audio.volume = parseFloat(val/10);
+}
+window.onload = setVolume(localStorage.getItem('values'));
+//mute btn
+let mute = true;
+$('.mute-btn').click(function () {
+    if(mute) {
+        setVolume(0);
+        mute = false;
+    } else {
+        setVolume(localStorage.getItem('values'));
+        mute = true;
+    }
+
+});
+$('.mute-btn').click(function () {
+    $('.mute-btn').toggleClass('mute-btn_muted');
+});
 
 //Time duration function
 function showDuration() {
@@ -167,9 +180,3 @@ $('.analyser-btn').click(function () {
     }
 });
 
-
-
-let volume = $('.volume').val();
-localStorage.setItem('values', volume);
-localStorage.getItem('values');
-console.log();

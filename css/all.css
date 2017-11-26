@@ -99,11 +99,22 @@ button {
      background:url(../img/volume.png) no-repeat;
     transition: 0.3s all ease;
  }
-
 .blue-analyser {
     background:url(../img/volume2.png) no-repeat !important;
-    background-color: #002D3C;
+    //background-color: #002D3C;
     transition: 0.3s all ease;
+}
+
+.mute-btn {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width:32px;
+    height:32px;
+    background:url(../img/mute2.png) no-repeat;
+}
+.mute-btn_muted {
+    background:url(../img/mute.png) no-repeat;
 }
 
 /*Playlist*/
