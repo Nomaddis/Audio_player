@@ -36,6 +36,10 @@ function initAudio(element) {
     source.connect(analyser);
     analyser.connect(context.destination);
     frameLooper();
+    //on track end play next
+    audio.onended = function() {
+        nxt();
+    };
 }
 
 
@@ -66,15 +70,28 @@ $('.stop-btn').click(function () {
 
 //Next btn function
 $('.next-btn').click(function () {
-    audio.pause();
-    let next = $('#playlist').find('li.active').next();
-    if(next.length === 0) {
-        next = $('#playlist').find('li:first-child')
-    }
-    initAudio(next);
-    audio.play();
-    showDuration();
+    nxt();
 });
+let nxt = function () {
+        audio.pause();
+        let next = $('#playlist').find('li.active').next();
+        if(next.length === 0) {
+            next = $('#playlist').find('li:first-child')
+        }
+        initAudio(next);
+        audio.play();
+        showDuration();
+};
+// $('.next-btn').click(function () {
+//     audio.pause();
+//     let next = $('#playlist').find('li.active').next();
+//     if(next.length === 0) {
+//         next = $('#playlist').find('li:first-child')
+//     }
+//     initAudio(next);
+//     audio.play();
+//     showDuration();
+// });
 
 //Prev btn function
 $('.prev-btn').click(function () {
@@ -131,7 +148,7 @@ function frameLooper(){
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
     ctx.fillStyle = '#00CCFF'; // Color of the bars
     bars = 100;
-    for (var i = 0; i < bars; i++) {
+    for (let i = 0; i < bars; i++) {
         bar_x = i * 3;
         bar_width = 2;
         bar_height = -(fbc_array[i] / 2);
