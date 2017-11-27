@@ -40,6 +40,7 @@ function initAudio(element) {
     audio.onended = function() {
         nxt();
     };
+    audio.crossOrigin = "anonymous";
 }
 
 
@@ -109,14 +110,14 @@ $('#playlist li').click(function () {
 
 // Volume Control
 //set/get volume value when page load
-$('.volume').change(function () {
-    audio.volume = parseFloat(this.value/10);
+$('.volume').on("input", function () {
+    audio.volume = parseFloat(this.value/100);
     let volume = $('.volume').val();
     localStorage.setItem('values', volume);
 });
 function setVolume(val) {
     $('.volume').val(val);
-    audio.volume = parseFloat(val/10);
+    audio.volume = parseFloat(val/100);
 }
 window.onload = setVolume(localStorage.getItem('values'));
 //mute btn
